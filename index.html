@@ -17,6 +17,7 @@
       </div>
       <!--list of users from db-->
       <div class="col-3">
+        <button class="btn btn-sm btn-dark btnRefresh m-1">reload info</button>
         <ul class="list-group">
           <li class="list-group-item active">Cras justo odio</li>
           <li class="list-group-item">Dapibus ac facilisis in</li>
@@ -28,11 +29,21 @@
           
     </div>
     <div class="row p-2 border controls">
-      <div class="col-1">
+      <div class="col-2 border mr-2 p-2">
         <button class="btn btn-dark btnLogin">login</button>
+        <br>
+        <label for="">login: </label>
+        <input type="text">
+        <label for="">pw: </label>
+        <input type="text">
       </div>
-      <div class="col-1">
+      <div class="col-2 border p-2">
         <button class="btn btn-dark btnRegister">register</button>
+        <br>
+        <label for="" class="text-monospace">login: </label>
+        <input type="text">
+        <label for="" class="text-monospace">pw: </label>
+        <input type="text">
       </div>
     </div>
   </div>

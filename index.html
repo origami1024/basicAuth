@@ -11,17 +11,19 @@
 </head>
 <body>
   <div class="container mt-5 border">
-    <div class="row p-2 border screen">
-      <div class="col-2 offset-1">
+    <div class="row p-2 border screen d-flex flex-column">
+      <div class="bg-light">
+        <span>user: </span>
+        <span class="nameField">______</span>
+        <button class="btn btn-sm btn-dark btnProfile m-1" disabled>profile</button>
         <span class="statusBadge badge bg-warning p-2">not logged</span>
       </div>
-      <!--list of users from db-->
+        <!--list of users from db-->
       <div class="col-3">
         <button class="btn btn-sm btn-dark btnRefresh m-1">reload info</button>
         <ul class="list-group usersList">
         </ul>
       </div>
-          
     </div>
     <div class="row p-2 border controls">
       <div class="col-2 border mr-2 p-2 loginControl">

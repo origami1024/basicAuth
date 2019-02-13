@@ -54,8 +54,7 @@ app.get('/getAllUsers', function(req, res) {
   .catch(e => console.error(e.stack))
 })
 app.get('/logout', function(req, res) {
-  res.cookie('cookie', '', {expires: new Date(0)});
-  res.cookie('uId', '', {expires: new Date(0)});
+  res.cookie('state', '', {expires: new Date(0)});
   res.end()
   console.log('logout')
   //need to delete more cookies

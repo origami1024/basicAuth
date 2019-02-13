@@ -65,6 +65,30 @@ function getAllUsers(e){
     }
   })
 }
+function stateLogin(){
+  state.login = true
+  $(".logoutPart").removeClass("d-none")
+  $(".loginPart").hide(0)//.addClass("d-none")
+  //$(".registerControl").addClass("d-none")
+  $(".registerControl").hide(0)
+  $(".statusBadge").text("logged in")
+  $(".statusBadge").removeClass("bg-warning")
+  $(".statusBadge").addClass("bg-success")
+  $(".nameField").text(state.data.username)
+  $('.btnProfile').prop('disabled', false)
+}
+function stateLogout(){
+  state.login = false
+  $(".logoutPart").addClass("d-none")
+  $(".loginPart").show(0)//.addClass("d-none")
+  //$(".registerControl").addClass("d-none")
+  $(".registerControl").show(0)
+  $(".statusBadge").text("not logged in")
+  $(".statusBadge").addClass("bg-warning")
+  $(".statusBadge").removeClass("bg-success")
+  $(".nameField").text("______")
+  $('.btnProfile').prop('disabled', true)
+}
 function login(e){
   //console.log('trolo')
   $.ajax({
@@ -78,15 +102,8 @@ function login(e){
       200: function(data) {
         console.log(data)
         console.log(200)
-        state.login = true
-        state.data = data
-        $(".logoutPart").removeClass("d-none")
-        $(".loginPart").hide(500)//.addClass("d-none")
-        //$(".registerControl").addClass("d-none")
-        $(".registerControl").hide(500)
-        $(".statusBadge").text("logged in")
-        $(".statusBadge").removeClass("bg-warning")
-        $(".statusBadge").addClass("bg-success")
+        state.data = JSON.parse(getCookie("state")) 
+        stateLogin()
       },
       201: function(data) {
         console.log(data)
@@ -98,16 +115,28 @@ function login(e){
     }*/
   })
 }
-
+function logout(e){
+  $.ajax({
+    type: 'GET',
+    url: 'logout',
+    success: function(data) {
+      stateLogout()
+    }
+  })
+}
 
 
 $( document ).ready(function() {
   $(".btnRegister").on("click", reg)
   $(".btnLogin").on("click", login)
+  $(".btnLogout").on("click", logout)
   $(".btnRefresh").on("click", getAllUsers)
 
   getAllUsers()
   //check if cookies appropriate, do cookiein (analogous to login)
   //document.cookie
-  console.log(getCookie("state"))//use this state
+  if (getCookie("state")!=''){
+    state.data = JSON.parse(getCookie("state"))
+    stateLogin()
+  }
 })

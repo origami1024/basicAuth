@@ -10,42 +10,44 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="container mt-5 border p-3">
+  <div class="container mt-5 border">
     <div class="row p-2 border screen">
       <div class="col-2 offset-1">
-        <span class="status badge bg-warning p-2">not logged</span>
+        <span class="statusBadge badge bg-warning p-2">not logged</span>
       </div>
       <!--list of users from db-->
       <div class="col-3">
         <button class="btn btn-sm btn-dark btnRefresh m-1">reload info</button>
-        <ul class="list-group">
-          <li class="list-group-item active">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Morbi leo risus</li>
-          <li class="list-group-item">Porta ac consectetur ac</li>
-          <li class="list-group-item">Vestibulum at eros</li>
+        <ul class="list-group usersList">
         </ul>
       </div>
           
     </div>
     <div class="row p-2 border controls">
-      <div class="col-2 border mr-2 p-2">
-        <button class="btn btn-dark btnLogin">login</button>
-        <br>
-        <label for="">login: </label>
-        <input type="text">
-        <label for="">pw: </label>
-        <input type="text">
+      <div class="col-2 border mr-2 p-2 loginControl">
+        <div class="logoutPart d-none">
+          <button class="btn btn-warning btnLogout">logout</button>
+        </div>
+        <div class="loginPart">
+          <button class="btn btn-dark btnLogin">login</button>
+          <br>
+          <label for="">login: </label>
+          <input type="text" class="w-100" id="logLogin">
+          <label for="">pw: </label>
+          <input type="text" class="w-100" id="logPW">
+        </div>
       </div>
-      <div class="col-2 border p-2">
+      <div class="col-2 border p-2 registerControl">
         <button class="btn btn-dark btnRegister">register</button>
         <br>
-        <label for="" class="text-monospace">login: </label>
-        <input type="text">
-        <label for="" class="text-monospace">pw: </label>
-        <input type="text">
+        <label for="regLogin" class="text-monospace">login: </label>
+        <input type="text" class="w-100" id="regLogin">
+        <label for="regPW" class="text-monospace">pw: </label>
+        <input type="text" class="w-100" id="regPW">
       </div>
     </div>
   </div>
+
+  <script src="mainScript.js"></script>
 </body>
 </html>
